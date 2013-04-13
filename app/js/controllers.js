@@ -3,28 +3,22 @@
 /* Controllers */
 
 function AlbumListCtrl($scope, $http) {
+	
+  var timeout
 
-  $http.jsonp("https://itunes.apple.com/lookup", {
-      params: {
-          "callback": "JSON_CALLBACK",
-          "id": "909253",
-		  "entity": "album",
-      }
-  }).success(function(data, status, headers, config) {
-      console.log("is scope : " + data);
-	  $scope.albums = data.results.splice(1, data.results.length)
-	  
-  }).error(function(data, status, headers, config) {
-      console.log("error" + data);
-  });
+  $scope.updateSearchTerm = function () {
+	  console.log("update searchTerm " + $scope.searchTerm);
+	  clearTimeout(timeout)
+	  timeout = setTimeout($scope.startSearch, 1000)
+  };
 
   $scope.startSearch = function () {
           
-	  // console.log("searchTerm " + searchTerm)
+	  console.log("searchTerm executing... " + $scope.searchTerm)
 	  $http.jsonp("https://itunes.apple.com/search", {
 	      params: {
 	          "callback": "JSON_CALLBACK",
-	          "term": "NIN",
+	          "term": $scope.searchTerm,
 			  "entity": "album",
 	      }
 	  }).success(function(data, status, headers, config) {

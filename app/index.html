@@ -14,8 +14,7 @@
     <div class="row-fluid">
       <div class="span2">
         <!--Sidebar content-->
-       	<input ng-model="searchTerm">
-		<button ng-click="startSearch()">Search</button>
+       	<input ng-model="searchTerm" ng-change="updateSearchTerm()">
       </div>
       <div class="span10">
         <!--Body content-->
@@ -25,6 +24,7 @@
 			  <a href="#/album/{{album.collectionId}}" class="thumb"><img ng-src="{{album.artworkUrl60}}"></a>
           </li>
         </ul>
+		{{keylog}}
       </div>
     </div>
   </div>
