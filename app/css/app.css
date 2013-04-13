@@ -1,7 +1,7 @@
 /* app css stylesheet */
 
 body {
-  padding-top: 20px;
+  padding-top: 2px;
 }
 
 .albums {
@@ -18,6 +18,6 @@ body {
 
 .albums li {
   clear: both;
-  height: 100px;
+  height: 30px;
   padding-top: 15px;
 }

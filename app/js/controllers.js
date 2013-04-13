@@ -13,19 +13,20 @@ function AlbumListCtrl($scope, $http) {
   };
 
   $scope.startSearch = function () {
-          
+     
 	  console.log("searchTerm executing... " + $scope.searchTerm)
 	  $http.jsonp("https://itunes.apple.com/search", {
 	      params: {
 	          "callback": "JSON_CALLBACK",
 	          "term": $scope.searchTerm,
 			  "entity": "album",
+			  "limit": "10",
 	      }
 	  }).success(function(data, status, headers, config) {
 		  $scope.albums = data.results.splice(1, data.results.length)
-	  
+	 
 	  }).error(function(data, status, headers, config) {
-
+		  
 	  });
   };
 

@@ -15,16 +15,15 @@
       <div class="span2">
         <!--Sidebar content-->
        	<input ng-model="searchTerm" ng-change="updateSearchTerm()">
+		{{searchStatus}}
       </div>
       <div class="span10">
         <!--Body content-->
         <ul class="albums">
           <li ng-repeat="album in albums" class="thumbnail">
 			  <p>{{album.collectionName}}</p>
-			  <a href="#/album/{{album.collectionId}}" class="thumb"><img ng-src="{{album.artworkUrl60}}"></a>
           </li>
         </ul>
-		{{keylog}}
       </div>
     </div>
   </div>
