@@ -1,28 +1,33 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app>
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-  -->
+  <title>iTunes Album Search</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
   <script src="lib/angular/angular.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
+</head>
+<body ng-controller="AlbumListCtrl">
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+        <!--Sidebar content-->
+       	<input ng-model="searchTerm">
+		<button ng-click="startSearch()">Search</button>
+      </div>
+      <div class="span10">
+        <!--Body content-->
+        <ul class="albums">
+          <li ng-repeat="album in albums" class="thumbnail">
+			  <p>{{album.collectionName}}</p>
+			  <a href="#/album/{{album.collectionId}}" class="thumb"><img ng-src="{{album.artworkUrl60}}"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

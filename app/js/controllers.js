@@ -2,21 +2,37 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+function AlbumListCtrl($scope, $http) {
 
-	  $http({method: 'GET', url: '/itunes.apple.com/lookup?id=909253&entity=album'}).
-	    success(function(data, status, headers, config) {
-	      // this callback will be called asynchronously
-	      // when the response is available
-		  $scope.app = data
-	    }).
-	    error(function(data, status, headers, config) {
-	      // called asynchronously if an error occurs
-	      // or server returns response with an error status.
-	    });
-		
-  }])
-  .controller('MyCtrl2', [function() {
+  $http.jsonp("https://itunes.apple.com/lookup", {
+      params: {
+          "callback": "JSON_CALLBACK",
+          "id": "909253",
+		  "entity": "album",
+      }
+  }).success(function(data, status, headers, config) {
+      console.log("is scope : " + data);
+	  $scope.albums = data.results.splice(1, data.results.length)
+	  
+  }).error(function(data, status, headers, config) {
+      console.log("error" + data);
+  });
 
-  }]);
+  $scope.startSearch = function () {
+          
+	  // console.log("searchTerm " + searchTerm)
+	  $http.jsonp("https://itunes.apple.com/search", {
+	      params: {
+	          "callback": "JSON_CALLBACK",
+	          "term": "NIN",
+			  "entity": "album",
+	      }
+	  }).success(function(data, status, headers, config) {
+		  $scope.albums = data.results.splice(1, data.results.length)
+	  
+	  }).error(function(data, status, headers, config) {
+
+	  });
+  };
+
+}
