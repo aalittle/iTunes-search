@@ -1,13 +1,13 @@
 {
   "name": "iTunes-search",
   "version": "0.0.1",
-  "description": "my first angular + Heroku project",
+  "description": "## Overview",
   "main": "web.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "karma": "~0.8.5"
+    "node-static": "~0.6.9"
   },
   "devDependencies": {},
   "scripts": {
@@ -17,8 +17,8 @@
     "type": "git",
     "url": "https://github.com/aalittle/iTunes-search.git"
   },
-  "author": "Andrew Little",
+  "author": "",
   "license": "BSD",
   "readmeFilename": "README.md",
-  "gitHead": "280cf64714c0417359ec12163700f5e783819595"
+  "gitHead": "55065c427e368d008ef0d8024a42a1c0b7fc88e8"
 }
