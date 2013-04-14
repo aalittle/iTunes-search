@@ -1,24 +1,11 @@
 {
-  "name": "iTunes-search",
+  "name": "node-example",
   "version": "0.0.1",
-  "description": "## Overview",
-  "main": "web.js",
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {
-    "node-static": "~0.6.9"
+    "express": "3.1.x"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aalittle/iTunes-search.git"
-  },
-  "author": "",
-  "license": "BSD",
-  "readmeFilename": "README.md",
-  "gitHead": "55065c427e368d008ef0d8024a42a1c0b7fc88e8"
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
 }
