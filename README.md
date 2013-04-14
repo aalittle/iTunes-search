@@ -4,6 +4,7 @@
 
 This application demonstrates the performance of the iTunes Search API for the purposes of populating a typeahead search box.
 
+[Live version of iTunes Search](http://aal-itunes-search.herokuapp.com/app/index.html)
 
 ## Prerequisites
 
