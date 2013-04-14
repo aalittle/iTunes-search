@@ -1,33 +1,18 @@
 'use strict';
+angular.module('itunes', ['ui.bootstrap']);
 
 /* Controllers */
 
-function AlbumListCtrl($scope, $http) {
+function TypeaheadCtrl($scope, $http, limitToFilter) {
+
+	$scope.radioMedia = 'album' //set a default for the radio button
+
+	//trigger a call to the iTunes Search API with the current albumName in the search box	
+    $scope.albums = function(searchTerm) {
 	
-  var timeout
-
-  $scope.updateSearchTerm = function () {
-	  console.log("update searchTerm " + $scope.searchTerm);
-	  clearTimeout(timeout)
-	  timeout = setTimeout($scope.startSearch, 1000)
+	return $http.jsonp("https://itunes.apple.com/search?callback=JSON_CALLBACK&entity=" + $scope.radioMedia + "&limit=10&term="+searchTerm).then(function(response){
+      return limitToFilter(response.data.results, 10);
+    });
+	
   };
-
-  $scope.startSearch = function () {
-     
-	  console.log("searchTerm executing... " + $scope.searchTerm)
-	  $http.jsonp("https://itunes.apple.com/search", {
-	      params: {
-	          "callback": "JSON_CALLBACK",
-	          "term": $scope.searchTerm,
-			  "entity": "album",
-			  "limit": "10",
-	      }
-	  }).success(function(data, status, headers, config) {
-		  $scope.albums = data.results.splice(1, data.results.length)
-	 
-	  }).error(function(data, status, headers, config) {
-		  
-	  });
-  };
-
 }
