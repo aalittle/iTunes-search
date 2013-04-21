@@ -1,11 +1,41 @@
 /* app css stylesheet */
 
 body {
-  padding-top: 2px;
+  padding-top: 40px;
 }
 
 .albums {
   list-style: none;
+}
+
+.result-modal {
+	
+	padding-top: 200px;
+	margin-bottom: 50px;
+	max-width: 250px;
+	background-color: #ccc;
+	
+}
+
+.form-area {
+	
+	max-width: 260px;
+	background-color: white;
+}
+
+.search-box {
+	
+	padding-left: 50px;
+}
+
+.search-field {
+	
+	min-width: 700px;
+}
+
+.btn-group {
+	
+	padding-bottom: 5px;
 }
 
 .thumb {

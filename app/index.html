@@ -2,27 +2,34 @@
 <html lang="en" ng-app="itunes">
 <head>
   <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iTunes Album Search</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.css">
   <script src="lib/angular/angular.js"></script>
   <script src="js/controllers.js"></script>
   <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
 </head>
 <body>
 
-	<div class='container-fluid' ng-controller="TypeaheadCtrl">
-	  
-	  <div class="btn-group" data-toggle="buttons-checkbox">
-	        <button type="button" class="btn btn-primary" ng-model="radioMedia" btn-radio="'album'">Album</button>
-	        <!--<button type="button" class="btn btn-primary" ng-model="radioMedia" btn-radio="'musicArtist'">Artist</button>/-->
-	        <button type="button" class="btn btn-primary" ng-model="radioMedia" btn-radio="'song'">Song</button>
-   	  </div>
-	  
-	  <pre>Album: {{result | json}}</pre>
-	  <input type="text" ng-model="result" typeahead="suggestion.collectionName for suggestion in albums($viewValue)" placeholder="start searching for albums">
+<div ng-controller="TypeaheadCtrl">	
+
+	<div class="container result-modal">
+		{{select | json}}
 	</div>
 
+	<div class="container form-area">
+			<div class="row search-box">
+			  <div class="btn-group" data-toggle="buttons-checkbox">
+				    <button type="button" class="btn btn-primary" ng-model="radioMedia" btn-radio="'album'">Album</button>
+				    <button type="button" class="btn btn-primary" ng-model="radioMedia" btn-radio="'song'">Song</button>
+			  </div>
+		    <input id="typeahead" type="text" clsss="search-field" ng-model="select" typeahead="suggestion.collectionName for suggestion in albums($viewValue)" placeholder="Search">
+			</div>
+		</div>
+</div>
+	
 </body>
 </html>
 
